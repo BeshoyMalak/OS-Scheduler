@@ -1,0 +1,108 @@
+
+Team members:
+- Moataz Mohamed Sayed Ahmed     201801903      s-moataz.mohamedsa@zewailcity.edu.eg
+- Beshoy Malak                   201800613      s-beshoy_malak@zewailcity.edu.eg
+- Abdulrhman Ahmed Ewiah         201800747	    s-abdulrhman.ewiah@zewailcity.edu.eg
+
+
+
+Workload:
+
+Phase 1:   
+
+- Moataz Mohamed:       Process Generator.c
+                        Process.C
+                        Headers.h
+
+Phase 1 (after Beshoy Joined):
+- Moataz Mohamed:       SJF Algorithm
+                        SRTN Algorithm
+
+- Beshoy Malak:         RR Algorithm
+                        HPF
+ 			contributed in process generator.c
+			
+                        
+- Abdulrhman Ahmed:      Memory allocation.
+                        
+                        
+
+
+
+Data structures Used:     Priority queue - Circular queue
+
+
+
+
+Time taken for each task:
+
+Phase 1 :
+- Process generator:  		            3 days
+- Scheduler:          		            4 days
+- Data structures Implementations:      1 day
+
+Phase 2:
+- SJF - SRTN          4 days
+- Memory Allocation   4 days
+
+
+Phase 1:
+
+The algorithm sequence is as follows:
+ Process Generator:
+
+- reading the input from the file and saving them into an array
+- Asking for the required Scheduling Algorithm
+- forking in order to initiate the clock and the scheduler (parent - child relation)
+- sorting the processes within the array according to their arrival time
+- sending process's data to the scheduler once their arrival time comes
+
+ Scheduler:
+
+- receiving process data from message queues once they arrive (the code does not enter this section unless another shared memory notifies
+   the scheduler that a process has been sent by the process generator).
+- assigning them to a new array (Process_table) that includes further parameters like : status & remaining time
+- forking to initiate "process.c" and instanteously send Stop signal to the process.
+- having a shared memory that provides each process with access to its remaining time throughwhich it can decrements it and notifes
+ the scheduler when it is finished. 
+
+ Algorithm of the HPF:
+
+- uses priority queue in order to arrange the process accrording to their priority, enque them once they arrive, and peek
+ every one second and get the process with the highest priority to be active and reduce its remaining time.
+- After one second, it loops again and if another process with higher priority has been found, scheduler sends stop signal
+ to the old process and continue signal to the new one.
+
+Process.C:
+
+- Have access  to its remaining time through shared memory with scheduler and it loops over the reamining time decrementing it
+till it reaches zero and thus notify the scheduler that it has finished. 
+
+
+Headers:
+- Added the implementation of priority queue in order to implement the HPF Algorithm.
+- In addition to some structs & enums to facilitate the Implementation. 
+
+
+- SJF Algorithm:
+
+The algorithm uses priority queue in order to arrange the processes according to their running time ( Shortest comes first)
+the algorith depended on two main cases:
+- whether the priority queue is empty or not.
+- whether the remaining time of the running process reached zero or not. 
+and then it reduces the remaining time of the running process, till it reaches zero and exits.
+
+Phase 2:
+
+- Memory allocation:
+
+The buddy system is implemented as follows- A list of free nodes of size 1024 bits that divides into two halves contnuously untill we acheive the smallest possible size that can occupy the request.
+the request in our code represents the process that starts working, and the deallocation takes place whenever any process is terminated. 
+
+
+
+
+
+
+
+
