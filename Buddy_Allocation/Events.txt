@@ -1,0 +1,10 @@
+At time 2 allocated 200 bytes for process 1 from 0 to 255
+At time 5 process 1 stopped arr 2 total 10 remain 7 wait 0
+At time 5 allocated 30 bytes for process 2 from 256 to 287
+At time 9 freed 30 bytes from process 2 from 256 to 287
+At time 9 allocated 55 bytes for process 3 from 256 to 319
+At time 12 freed 55 bytes from process 3 from 256 to 319
+At time 12 process 1 resumed arr 2 total 10 remain 7 wait 7
+At time 19 freed 200 bytes from process 1 from 0 to 255
+At time 19 allocated 14 bytes for process 4 from 0 to 15
+At time 39 freed 14 bytes from process 4 from 0 to 15

@@ -1,3 +1,8 @@
+//
+// Created by shaffei on 3/24/20.
+//Implements a queue of events
+////original source: http://rosettacode.org/wiki/Queue/Definition#C
+
 #ifndef OS_STARTER_CODE_EVENTS_queue_H
 #define OS_STARTER_CODE_EVENTS_queue_H
 
