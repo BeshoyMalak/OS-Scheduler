@@ -1,8 +1,3 @@
-//
-// Created by shaffei on 3/24/20.
-//
-//implements a heap of processes
-//original source: http://rosettacode.org/wiki/Priority_queue#C
 
 #ifndef OS_STARTER_CODE_PROCESSHEAP_H
 #define OS_STARTER_CODE_PROCESSHEAP_H

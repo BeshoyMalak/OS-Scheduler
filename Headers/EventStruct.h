@@ -1,6 +1,4 @@
-//
-// Created by shaffei on 3/24/20.
-//
+
 
 #ifndef OS_STARTER_CODE_EVENTSTRUCT_H
 #define OS_STARTER_CODE_EVENTSTRUCT_H
@@ -23,58 +21,55 @@ typedef struct EventStruct {
 
 void PrintEvent(const Event *pEvent) { //print an event using the same output file format
     printf("At time %d ", pEvent->mTimeStep);
+    printf("process %d ", pEvent->mpProcess->mId);
     switch (pEvent->mType) {
         case START:
-            printf("allocated %d bytes for process %d ", pEvent->mpProcess->mMemSize, pEvent->mpProcess->mId);
-            printf("from %d to %d", pEvent->mpProcess->mMemAddr, pEvent->mpProcess->mMemAlloc + pEvent->mpProcess->mMemAddr - 1);
+            printf("started ");
             break;
         case STOP:
-            printf("process %d stopped ", pEvent->mpProcess->mId);
-            printf("arr %d total %d ", pEvent->mpProcess->mArrivalTime, pEvent->mpProcess->mRuntime);
-            printf("remain %d wait %d", pEvent->mCurrentRemTime, pEvent->mCurrentWaitTime);
+            printf("stopped ");
             break;
         case CONT:
-            printf("process %d resumed ", pEvent->mpProcess->mId);
-            printf("arr %d total %d ", pEvent->mpProcess->mArrivalTime, pEvent->mpProcess->mRuntime);
-            printf("remain %d wait %d", pEvent->mCurrentRemTime, pEvent->mCurrentWaitTime);
+            printf("resumed ");
             break;
         case FINISH:
-            printf("freed %d bytes from process %d ", pEvent->mpProcess->mMemSize, pEvent->mpProcess->mId);
-            printf("from %d to %d", pEvent->mpProcess->mMemAddr, pEvent->mpProcess->mMemAlloc + pEvent->mpProcess->mMemAddr - 1);
+            printf("finished ");
             break;
         default:
             printf("error ");
             break;
     }
-
+    printf("arr %d total %d ", pEvent->mpProcess->mArrivalTime, pEvent->mpProcess->mRuntime);
+    printf("remain %d wait %d", pEvent->mCurrentRemTime, pEvent->mCurrentWaitTime);
+    if (pEvent->mType == FINISH)
+        printf(" TA %d WTA %.2f", pEvent->mTaTime, pEvent->mWTaTime);
     printf("\n");
 }
 
 void OutputEvent(const Event *pEvent, FILE *pFile) { //print an event using the same output file format
-    fprintf(pFile,"At time %d ", pEvent->mTimeStep);
+    fprintf(pFile, "At time %d ", pEvent->mTimeStep);
+    fprintf(pFile, "process %d ", pEvent->mpProcess->mId);
     switch (pEvent->mType) {
         case START:
-            fprintf(pFile,"allocated %d bytes for process %d ", pEvent->mpProcess->mMemSize, pEvent->mpProcess->mId);
-            fprintf(pFile,"from %d to %d", pEvent->mpProcess->mMemAddr, pEvent->mpProcess->mMemAlloc + pEvent->mpProcess->mMemAddr - 1);
+            fprintf(pFile, "started ");
             break;
         case STOP:
-            fprintf(pFile,"process %d stopped ", pEvent->mpProcess->mId);
-            fprintf(pFile,"arr %d total %d ", pEvent->mpProcess->mArrivalTime, pEvent->mpProcess->mRuntime);
-            fprintf(pFile,"remain %d wait %d", pEvent->mCurrentRemTime, pEvent->mCurrentWaitTime);
+            fprintf(pFile, "stopped ");
             break;
         case CONT:
-            fprintf(pFile,"process %d resumed ", pEvent->mpProcess->mId);
-            fprintf(pFile,"arr %d total %d ", pEvent->mpProcess->mArrivalTime, pEvent->mpProcess->mRuntime);
-            fprintf(pFile,"remain %d wait %d", pEvent->mCurrentRemTime, pEvent->mCurrentWaitTime);
+            fprintf(pFile, "resumed ");
             break;
         case FINISH:
-            fprintf(pFile,"freed %d bytes from process %d ", pEvent->mpProcess->mMemSize, pEvent->mpProcess->mId);
-            fprintf(pFile,"from %d to %d", pEvent->mpProcess->mMemAddr, pEvent->mpProcess->mMemAlloc + pEvent->mpProcess->mMemAddr - 1);
+            fprintf(pFile, "finished ");
             break;
         default:
-            fprintf(pFile,"error ");
+            fprintf(pFile, "error ");
             break;
     }
+    fprintf(pFile, "arr %d total %d ", pEvent->mpProcess->mArrivalTime, pEvent->mpProcess->mRuntime);
+    fprintf(pFile, "remain %d wait %d", pEvent->mCurrentRemTime, pEvent->mCurrentWaitTime);
+    if (pEvent->mType == FINISH)
+        fprintf(pFile, " TA %d WTA %.2f", pEvent->mTaTime, pEvent->mWTaTime);
     fprintf(pFile, "\n");
 }
 

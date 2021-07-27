@@ -1,7 +1,7 @@
 #ifndef OS_STARTER_CODE_HEADERS_H
 #define OS_STARTER_CODE_HEADERS_H
 
-#include <stdio.h>      //if you don't use scanf/printf change this include
+#include <stdio.h>      
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/file.h>

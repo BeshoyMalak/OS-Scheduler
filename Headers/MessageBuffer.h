@@ -1,6 +1,4 @@
 //
-// Created by shaffei on 3/24/20.
-//
 
 #ifndef OS_STARTER_CODE_MESSAGEBUFFER_H
 #define OS_STARTER_CODE_MESSAGEBUFFER_H
